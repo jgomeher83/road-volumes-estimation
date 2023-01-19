@@ -3,4 +3,4 @@ Traffic Counting using YOLOv5+DeepSort with Python". Computer vision program to 
 
 
 
-<img src="chile2.gif" height="450" width="450"/>
+<img src="chile2.gif" height="450" width="550"/>
