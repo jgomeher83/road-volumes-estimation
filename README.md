@@ -3,7 +3,7 @@ Traffic Counting using YOLOv5+DeepSort with Python". Computer vision program to 
 
 
 
-<img src="chile2.gif" height="450" width="550"/><img src="volumen-classes.png.gif" height="450" width="550"/>
+<img src="chile2.gif" height="450" width="550"/> <img src="volumen-classes.png" height="450" width="550"/>
 <img src="Screenshot from 2023-01-19 19-44-54.png" />
 
 
