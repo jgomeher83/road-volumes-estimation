@@ -5,7 +5,7 @@ Traffic Counting using YOLOv8+DeepSort with Python". Computer vision program to 
 https://jgomeher83-road-volumes-estimation-app-43g6hy.streamlit.app/
 
 <img src="chile2.gif" height="350" width="470"/> <img src="volumen-classes.png" height="350" width="470"/>
-<img src="chile3.gif" height="500" width="800"/>
+<img src="chile3.gif" height="400" width="650"/>
 <img src="Screenshot from 2023-01-19 19-44-54.png" width="1000"/>
 
 
