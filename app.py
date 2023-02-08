@@ -181,6 +181,7 @@ with placeholder.container():
 
     # st.markdown("### Detailed Data View")
     # st.dataframe(df_trajectories)
+    st.markdown("<h6 style='text-align: justify; color: gray;'>Textos proporcionados por ChatGPT, un modelo de lenguaje desarrollado por OpenAI (https://openai.com) en [08 de Febrero del 2023].</h6>", unsafe_allow_html=True)
     time.sleep(1)
 #placeholder.empty()
 
