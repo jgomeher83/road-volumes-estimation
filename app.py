@@ -14,9 +14,8 @@ st.set_page_config(
 )
 st.markdown("<h1 style='text-align: center; color: black;background-color:#F5F5F5'>Road Volumes Estimation</h1>", unsafe_allow_html=True)
 
-st.markdown("<h4 style='text-align: justify; color: gray;'>Vehicular traffic counting is a system that allows counting and recording the number of vehicles that pass through a specific location in a specific period of time. This system can be implemented using computer vision technologies, such as YOLOv8 and ByteTrack. YOLOv8 is an object detection neural network that uses a deep learning architecture to detect and classify objects in an image or video. In the context of vehicular traffic counting, YOLOv8 can be used to detect vehicles in a road video and then count the number of vehicles that have passed.</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: justify; color: gray;'>Vehicular traffic counting is a system that allows counting and recording the number of vehicles that pass through a specific location in a specific period of time. This system can be implemented using computer vision technologies, such as YOLOv8 and ByteTrack. YOLOv8 is an object detection neural network that uses a deep learning architecture to detect and classify objects in an image or video.</h4>", unsafe_allow_html=True)
 st.markdown('')
-
 st.markdown("<h4 style='text-align: justify; color: gray;'>ByteTrack, on the other hand, is a video object tracking tool that allows tracking specific objects throughout a video and recording their position over time. In the context of vehicular traffic counting, ByteTrack can be used to track individual vehicles throughout a video and record their position over time, allowing the counting of the total number of vehicles that have passed.</h4>", unsafe_allow_html=True)
 st.markdown('')
 st.markdown("<h4 style='text-align: justify; color: gray;'>In summary, vehicular traffic counting using YOLOv8 and ByteTrack involves using computer vision technologies to detect and track vehicles in a video and then count the total number of vehicles that have passed through a location in a specific period of time.</h4>", unsafe_allow_html=True)           
@@ -27,6 +26,7 @@ df_train = pd.read_csv('train.csv')
 df = pd.read_csv("df.csv")
 df_trajectories = pd.read_csv("df_scatter.csv")
 df_trajectories['line_name'] = df_trajectories['line_name'].astype('str')
+df_trajectories['time_video'] = df_trajectories['time_video'] / 60
 
 df_lines = pd.read_csv("df_lines.csv")
 df_lines['time_video'] = df_lines['time_video'] / 60
@@ -119,11 +119,26 @@ with placeholder.container():
         with fig_col1:
             st.markdown("### Total by Gates")
             fig = px.bar(df_gate_total, x='line_name', y='Total',color='line_name',text_auto=True)
+            fig.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                    
+                ))
             st.plotly_chart(fig, use_container_width=True)
         # st.dataframe(df_gate_total)
         with fig_col2:
             st.markdown("### Total by Class")
             fig2 = px.bar(df_class_total, x='nomClass', y='Total',color='nomClass',text_auto=True)
+            fig2.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                ))
             st.plotly_chart(fig2, use_container_width=True)
         st.markdown('')
         st.markdown("<h4 style='text-align: justify; color: gray;'>The bar chart displays the results of a traffic count conducted using the YOLOv8 app. The chart presents the number of vehicles detected in a specific area, grouped by type of vehicle. Each bar in the chart corresponds to a different type of vehicle, such as cars, trucks, buses, motorcycles, and bicycles, and the height of each bar represents the number of vehicles detected of that type. The Y-axis is labeled with the number of vehicles, while the X-axis is labeled with the different types of vehicles. The bars are color-coded to distinguish between the different types of vehicles. This bar chart provides a visual representation of the traffic data collected by the YOLOv8 app, allowing for easy analysis and understanding of the vehicle composition in the area.</h4>", unsafe_allow_html=True)  
@@ -147,15 +162,29 @@ with placeholder.container():
             st.markdown("### Total Vehicles")
             fig_time_0 = px.line(df_lines, x='time_video', y='c', color='nomClass', markers=True)
             fig_time_0.update_layout(autosize=True)
+            fig_time_0.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                ))
             st.plotly_chart(fig_time_0, use_container_width=True)
             st.markdown('')
-            st.markdown("<h4 style='text-align: justify; color: gray;'>Un gráfico estacionario en un aforo vehicular es un tipo de representación gráfica que muestra la cantidad de vehículos que pasan por un punto determinado en un período de tiempo determinado. Un gráfico estacionario es aquel en el que la cantidad de vehículos que pasan por un punto determinado no varía con el tiempo, es decir, la tasa de flujo de vehículos es constante. Estos gráficos se utilizan para analizar el tráfico vehicular y para identificar patrones y tendencias en el tráfico, como la distribución diaria, semanal o mensual de vehículos. También se pueden utilizar para evaluar la eficacia de las medidas de control del tráfico y para planificar la construcción de carreteras y la ubicación de semáforos.</h4>", unsafe_allow_html=True)  
+            st.markdown("<h4 style='text-align: justify; color: gray;'>A stationary chart in vehicular traffic is a type of graphical representation that shows the number of vehicles passing through a specific point over a given period of time. A stationary chart is one in which the number of vehicles passing through a specific point does not change over time, meaning the flow rate of vehicles is constant. These charts are used to analyze vehicular traffic and to identify patterns and trends in traffic, such as the daily, weekly, or monthly distribution of vehicles. They can also be used to evaluate the effectiveness of traffic control measures and to plan the construction of roads and the placement of traffic lights.</h4>", unsafe_allow_html=True)  
             st.markdown("<h6 style='text-align: justify; color: gray;'>Text created using ChatGPT.</h6>", unsafe_allow_html=True) 
 
             # st.dataframe(df_lines, width=2000, height=None)
         with fig_time_ac:
             st.markdown("### Accumulated")
             fig_time_acc = px.line(df_lines_ac, x='time_video', y='GCS', color='nomClass', markers=True)
+            fig_time_acc.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                ))
             st.plotly_chart(fig_time_acc, use_container_width=True)
             # st.write(fig_time_acc)
             st.markdown('')
@@ -177,23 +206,46 @@ with placeholder.container():
         with fig_col8:
             st.markdown("### Trajectories by Gates")
             fig8 = px.scatter(df_trajectories, x='xc',y='yc', color='line_name')
+            fig8.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                ))
             st.plotly_chart(fig8, use_container_width=True)
         with fig_col9:
             st.markdown("### Trajectories by Class")
             fig9 = px.scatter(df_trajectories, x='xc',y='yc', color='nomClass')
+            fig9.update_layout(legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="right",
+                    x=1,font=dict(size= 20)
+                ))
             st.plotly_chart(fig9, use_container_width=True)
 
 
 
         
     st.markdown('')
+
     st.markdown("<h4 style='text-align: justify; color: gray;'>The trajectory of a vehicle is the path it takes through the scene, including its speed, direction, and position.The program would likely save the trajectories of each vehicle in a data structure, such as an array or a database, for later analysis. The saved trajectories could then be used to generate various statistics about the traffic flow, such as the average speed of vehicles, the number of vehicles that passed through the scene, and the direction of travel..</h4>", unsafe_allow_html=True)  
-    st.markdown("<h6 style='text-align: justify; color: gray;'>Text created using ChatGPT.</h6>", unsafe_allow_html=True) 
+    st.markdown('')
+    st.markdown("<h3 style='text-align: center; color: black;background-color:#F5F5F5'>References</h3>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: justify; color: gray;'>ChatGPT. (2023). Definitions of Road Volumes Estimations in Vehicular Traffic retrieved from OpenAI: https://openai.com/ .</h6>", unsafe_allow_html=True) 
 
     # st.markdown("### Detailed Data View")
     # st.dataframe(df_trajectories)
     time.sleep(1)
 #placeholder.empty()
+
+
+
+
+
+
 
 
 
