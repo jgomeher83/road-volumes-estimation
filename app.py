@@ -92,8 +92,8 @@ with placeholder.container():
                 fig.add_trace(go.Scatter(x=df_train['epoch'], y=df_train['val/dfl_loss']),
                             row=2, col=3)
                 fig.update_layout(showlegend=False, title_text="Training yolov8n results - Train/Validation Loss")
-                fig.update_layout(autosize=True,width=400,height=400)
-                st.write(fig)
+                fig.update_layout(autosize=True)
+                st.plotly_chart(fig, use_container_width=True)
 
         # fig_train2 = st.expander('Metrics')
             with fig_2:    
@@ -107,8 +107,8 @@ with placeholder.container():
                 fig2.add_trace(go.Scatter(x=df_train['epoch'], y=df_train['metrics/mAP50-95(B)']),
                             row=2, col=2)
                 fig2.update_layout(showlegend=False, title_text="Training yolov8n results - Metrics")
-                fig2.update_layout(autosize=True,width=400,height=400)
-                st.write(fig2)
+                fig2.update_layout(autosize=True)
+                st.plotly_chart(fig2, use_container_width=True)
         
 
     
@@ -120,14 +120,12 @@ with placeholder.container():
         with fig_col1:
             st.markdown("### Total by Gates")
             fig = px.bar(df_gate_total, x='line_name', y='Total',color='line_name',text_auto=True)
-            fig.update_layout(autosize=True,width=400,height=400)
-            st.write(fig)
+            st.plotly_chart(fig, use_container_width=True)
         # st.dataframe(df_gate_total)
         with fig_col2:
             st.markdown("### Total by Class")
             fig2 = px.bar(df_class_total, x='nomClass', y='Total',color='nomClass',text_auto=True)
-            fig2.update_layout(autosize=True,width=400,height=400)
-            st.write(fig2)
+            st.plotly_chart(fig2, use_container_width=True)
         st.markdown('')
         st.markdown("<h4 style='text-align: justify; color: gray;'>The bar chart displays the results of a traffic count conducted using the YOLOv8 app. The chart presents the number of vehicles detected in a specific area, grouped by type of vehicle. Each bar in the chart corresponds to a different type of vehicle, such as cars, trucks, buses, motorcycles, and bicycles, and the height of each bar represents the number of vehicles detected of that type. The Y-axis is labeled with the number of vehicles, while the X-axis is labeled with the different types of vehicles. The bars are color-coded to distinguish between the different types of vehicles. This bar chart provides a visual representation of the traffic data collected by the YOLOv8 app, allowing for easy analysis and understanding of the vehicle composition in the area.</h4>", unsafe_allow_html=True)  
         st.markdown("<h6 style='text-align: justify; color: gray;'>Text created using ChatGPT.</h6>", unsafe_allow_html=True) 
@@ -149,8 +147,8 @@ with placeholder.container():
         with fig_time:
             st.markdown("### Total Vehicles")
             fig_time_0 = px.line(df_lines, x='time_video', y='c', color='nomClass', markers=True)
-            fig_time_0.update_layout(autosize=True,width=400,height=400)
-            st.write(fig_time_0)
+            fig_time_0.update_layout(autosize=True)
+            st.plotly_chart(fig_time_0, use_container_width=True)
             st.markdown('')
             st.markdown("<h4 style='text-align: justify; color: gray;'>Un gráfico estacionario en un aforo vehicular es un tipo de representación gráfica que muestra la cantidad de vehículos que pasan por un punto determinado en un período de tiempo determinado. Un gráfico estacionario es aquel en el que la cantidad de vehículos que pasan por un punto determinado no varía con el tiempo, es decir, la tasa de flujo de vehículos es constante. Estos gráficos se utilizan para analizar el tráfico vehicular y para identificar patrones y tendencias en el tráfico, como la distribución diaria, semanal o mensual de vehículos. También se pueden utilizar para evaluar la eficacia de las medidas de control del tráfico y para planificar la construcción de carreteras y la ubicación de semáforos.</h4>", unsafe_allow_html=True)  
             st.markdown("<h6 style='text-align: justify; color: gray;'>Text created using ChatGPT.</h6>", unsafe_allow_html=True) 
@@ -159,8 +157,8 @@ with placeholder.container():
         with fig_time_ac:
             st.markdown("### Accumulated")
             fig_time_acc = px.line(df_lines_ac, x='time_video', y='GCS', color='nomClass', markers=True)
-            fig_time_acc.update_layout(autosize=True,width=400,height=400)
-            st.write(fig_time_acc)
+            st.plotly_chart(fig_time_acc, use_container_width=True)
+            # st.write(fig_time_acc)
             st.markdown('')
             st.markdown("<h4 style='text-align: justify; color: gray;'>A cumulative flow chart in vehicle traffic counts is a type of graphical representation that shows the total number of vehicles that have passed through a specific point over a given period of time. Unlike the stationary chart, which shows the number of vehicles passing through a point at a given moment, the cumulative flow chart shows the total number of vehicles that have passed through a point over time.The cumulative flow chart is useful for analyzing the evolution of vehicle traffic at an intersection over time. For example, it can be used to identify patterns and trends in traffic, such as daily, weekly, or monthly vehicle distributions. It can also be used to evaluate the effectiveness of traffic control measures and to plan the construction of roads and the location of traffic lights.</h4>", unsafe_allow_html=True)  
             st.markdown("<h6 style='text-align: justify; color: gray;'>Text created using ChatGPT.</h6>", unsafe_allow_html=True) 
@@ -180,13 +178,12 @@ with placeholder.container():
         with fig_col8:
             st.markdown("### Trajectories by Gates")
             fig8 = px.scatter(df_trajectories, x='xc',y='yc', color='line_name')
-            fig8.update_layout(autosize=True,width=400,height=400)
-            st.write(fig8)
+            st.plotly_chart(fig8, use_container_width=True)
         with fig_col9:
             st.markdown("### Trajectories by Class")
             fig9 = px.scatter(df_trajectories, x='xc',y='yc', color='nomClass')
-            fig9.update_layout(autosize=True,width=400,height=400)
-            st.write(fig9)
+            st.plotly_chart(fig9, use_container_width=True)
+
 
 
         
