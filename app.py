@@ -122,7 +122,7 @@ with placeholder.container():
             fig.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                     
@@ -135,7 +135,7 @@ with placeholder.container():
             fig2.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                 ))
@@ -165,7 +165,7 @@ with placeholder.container():
             fig_time_0.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                 ))
@@ -181,7 +181,7 @@ with placeholder.container():
             fig_time_acc.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                 ))
@@ -209,7 +209,7 @@ with placeholder.container():
             fig8.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                 ))
@@ -220,7 +220,7 @@ with placeholder.container():
             fig9.update_layout(legend=dict(
                     orientation="h",
                     yanchor="bottom",
-                    y=1.02,
+                    y=1.1,
                     xanchor="right",
                     x=1,font=dict(size= 20)
                 ))
@@ -240,6 +240,11 @@ with placeholder.container():
     # st.dataframe(df_trajectories)
     time.sleep(1)
 #placeholder.empty()
+
+
+
+
+
 
 
 
